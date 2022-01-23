@@ -4,6 +4,7 @@
     "private": "true",
     "version": "0.0.0-dev0",
     "scripts": {
+        "test": "hardhat test",
         "build": "hardhat compile"
     },
     "dependencies": {

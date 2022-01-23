@@ -1,17 +1,9 @@
-import { expect } from "chai"
-// import "@nomiclabs/hardhat-web3"
-// import { artifacts, web3 } from "hardhat"
+import "@nomiclabs/hardhat-web3"
+import { web3 } from "hardhat"
+import { deployBallot } from "../src/ballot";
 
-// describe("Token contract", function () {
-//     it("Deployment should assign the total supply of tokens to the owner", async function () {
-//         artifacts.require("Ballot")
-//         const [owner] = await web3.getSigners();
-
-//         const Ballot = await ethers.getContractFactory("Ballot");
-
-//         const hardhatToken = await Ballot.deploy();
-
-//         const ownerBalance = await hardhatToken.balanceOf(owner.address);
-//         expect(await hardhatToken.totalSupply()).to.equal(ownerBalance);
-//     });
-// });
+describe("Ballot contract", function () {
+    it("Should deploy Ballot contract", async function () {
+        await deployBallot(web3, ["Proposal 1", "Proposal 2"])
+    });
+});
