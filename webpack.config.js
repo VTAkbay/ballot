@@ -1,5 +1,6 @@
 const path = require("path")
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
 
 /**
  * @type import('webpack').Configuration
@@ -15,6 +16,7 @@ module.exports = {
             },
         ],
     },
+    devtool: "source-map",
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
     },
@@ -25,6 +27,9 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: "./src/index.html",
+        }),
+        new NodePolyfillPlugin({
+            excludeAliases: ["console"]
         }),
     ],
 };
