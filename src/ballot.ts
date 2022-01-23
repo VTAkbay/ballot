@@ -13,11 +13,11 @@ export async function getAccounts(web3: Web3) {
 export async function deployBallot(web3: Web3, proposals: string[]) {
     const [ account ] = await getAccounts(web3)
     console.log("account:", account)
-    const BallotContract = new web3.eth.Contract(BallotArtifact.abi)
+    const BallotContract = new web3.eth.Contract(BallotArtifact.abi as any)
     console.log("BallotContract:", BallotContract)
     const tx = BallotContract.deploy({
-        data: BallotArtifact.deployedBytecode,
-        arguments: [ proposals ],
+        data: BallotArtifact.bytecode,
+        arguments: [ proposals.map(proposal => web3.utils.utf8ToHex(proposal)) ],
     })
     console.log("transaction:", tx)
     const contract = await tx.send({
