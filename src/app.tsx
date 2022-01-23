@@ -5,11 +5,21 @@ async function run(web3, proposals) {
     await deployBallot(web3, proposals)
 }
 
+function parseProposalList(text: string): string[] {
+    const lines = text.split("\n")
+    const proposals = lines
+        .map(line => line.trim())
+        .filter(line => line.length > 0)
+    return proposals
+}
+
 export function App(params) {
-    const [p1, setp1] = React.useState("")
+    const [proposalList, setProposalList] = React.useState("")
     return <>
-        Ballot
-        <button onClick={() => run(params.web3, [p1])}>Test</button>
-        <input type="text" value={p1} onChange={e => setp1(e.target.value)}/>
+        <h1>Create Ballot</h1>
+        <hr/>
+        <textarea style={{height: "150px", width: "300px"}} value={proposalList} onChange={e => setProposalList(e.target.value)}/>
+        <br/>
+        <button onClick={() => run(params.web3, parseProposalList(proposalList))}>Test</button>
     </>
 }
