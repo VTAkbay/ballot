@@ -22,6 +22,8 @@ export async function deployBallot(web3: Web3, proposals: string[]) {
     console.log("transaction:", tx)
     const contract = await tx.send({
         from: account,
+        gas: 1500000,
+        gasPrice: '30000000000'
     })
     console.log("contract:", contract)
 }
