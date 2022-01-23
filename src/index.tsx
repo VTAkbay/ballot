@@ -12,5 +12,5 @@ if (typeof ethereum == "undefined") {
     (window as any).web3 = web3;
     (window as any).deployBallot = deployBallot;
 
-    render(<App />, document.getElementById("content"))
+    render(<App web3={web3} />, document.getElementById("content"))
 }
