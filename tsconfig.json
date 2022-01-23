@@ -5,6 +5,7 @@
         "module": "CommonJS",
         "moduleResolution": "Node",
         "sourceMap": true,
+        "jsx": "react",
     },
     "include": [
         "src",
